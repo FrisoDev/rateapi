@@ -2,7 +2,7 @@ const express = require('express')
 const cors = require('cors')
 const bodyParser = require('body-parser')
 const passport = require('./config/auth')
-const { games, users, sessions, gamePlayers } = require('./routes')
+const { batches, users, sessions } = require('./routes')
 const http = require('http')
 
 
