@@ -5,9 +5,8 @@ const utils = require('../lib/utils')
 
 const authenticate = passport.authorize('jwt', { session: false })
 
-module.exports = io => {
-  router
-    .get('/batches', (req, res, next) => {
+
+    router.get('/batches', (req, res, next) => {
       Batch.find()
         // Newest games first
         .sort({ createdAt: -1 })
@@ -30,10 +29,13 @@ module.exports = io => {
       const newBatch = {
         startDate: req.startDate,
         endDate: req.endDate,
-        students: [{
-          name: req.student.name,
-          pairs: [],
-        }],
+        students: req.
+
+        // students: [{
+        //   name: req.student.name,
+        //   userId: req.userId,
+        //   evaluations: req.evaluations,
+        // }],
       }
 
       Game.create(newGame)
@@ -146,4 +148,3 @@ module.exports = io => {
     })
 
   return router
-}
