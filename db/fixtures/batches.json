@@ -1,22 +1,30 @@
 [
   {
-    "students":[
-      {
-        "name": "Johnny Guitar",
-        "evaluations": [
-          {
-            "date": "2017-11-14",
-            "evaluation": "2",
-            "note": "You done now"
-          }
-        ],
-        "image_url": "https://i2.wp.com/www.kingsizemag.se/wp-content/uploads/2017/11/big-shaq-genius-mans-not-ls.jpg"
-      }
-    ],
-    "batchNumber": "13",
-    "startDate": "2017-11-14",
-    "endDate": "2017-11-15",
-    "createdAt": "2017-11-11",
-    "updatedAt": "2017-11-12"
+    "batchNumber" : "1",
+    "startDate" : "2017-10-22",
+    "endDate" : "2017-12-22",
+    "students" : [
+      {"name" : "Wayo",
+         "photo" : "https://i2.wp.com/www.kingsizemag.se/wp-content/uploads/2017/11/big-shaq-genius-mans-not-ls.jpg" },
+      {"name" : "Ayo",
+         "photo" : "https://i2.wp.com/www.kingsizemag.se/wp-content/uploads/2017/11/big-shaq-genius-mans-not-ls.jpg" },
+      {"name" : "Yayo",
+         "photo" : "https://i2.wp.com/www.kingsizemag.se/wp-content/uploads/2017/11/big-shaq-genius-mans-not-ls.jpg"
+        }]
+  },
+  {
+    "batchNumber" : "2",
+    "startDate" : "2017-10-22",
+    "endDate" : "2017-12-22"
+  },
+  {
+    "batchNumber" : "3",
+    "startDate" : "2017-10-22",
+    "endDate" : "2017-12-22"
+  },
+  {
+    "batchNumber" : "4",
+    "startDate" : "2017-10-22",
+    "endDate" : "2017-12-22"
   }
 ]
