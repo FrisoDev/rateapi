@@ -4,7 +4,7 @@ const { Schema } = mongoose
 const evaluationSchema = new Schema({
   color: { type: Number, default: 0 },
   date: { type: Date, default: Date.now },
-  remark: { type: String },
+  note: { type: String },
 });
 
 const studentSchema = new Schema({
