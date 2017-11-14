@@ -11,10 +11,10 @@ const studentSchema = new Schema({
   name: { type: String, default: "Big Shaq"},
   evaluations: [evalSchema],
   image_url: { type: String, default: "https://i2.wp.com/www.kingsizemag.se/wp-content/uploads/2017/11/big-shaq-genius-mans-not-ls.jpg" },
-  userId: { type: Schema.Types.ObjectId, ref: 'users' },
 });
 
 const batchSchema = new Schema({
+  batchNumber: { type: Number, default: 11},
   students: [studentSchema],
   startDate: { type: Date, default: Date.now },
   endDate: { type: Date, default: Date.now },

@@ -6,13 +6,14 @@
         "evaluations": [
           {
             "date": "2017-11-14",
-            "evaluation": 2,
+            "evaluation": "2",
             "note": "You done now"
           }
         ],
         "image_url": "https://i2.wp.com/www.kingsizemag.se/wp-content/uploads/2017/11/big-shaq-genius-mans-not-ls.jpg"
       }
     ],
+    "batchNumber": "12",
     "startDate": "2017-11-14",
     "endDate": "2017-11-15",
     "createdAt": "2017-11-11",
