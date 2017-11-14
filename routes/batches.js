@@ -5,7 +5,7 @@ const { Batch } = require('../models')
 const authenticate = passport.authorize('jwt', { session: false })
 
 router.get('/batches', (req, res, next) => {
-  Batch.find({batchNumber: 12})
+  Batch.find()
     .sort({ createdAt: -1 })
     .then((batches) => res.json(batches))
     .catch((error) => next(error))
