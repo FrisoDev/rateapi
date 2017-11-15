@@ -4,31 +4,44 @@ const { Batch, Student } = require('../models')
 
 const authenticate = passport.authorize('jwt', { session: false })
 
-router.get('/batches/:id/students', (req, res, next) => {
-    const id = req.params.id
+router.get('/students/:id', authenticate, (req, res, next) => {
+        const id = req.params.id
 
-    Batch.findById(id)
-      .then((batch) => {
-        if (!batch) { return next() }
-        res.json(batch)
-      })
-      .catch((error) => next(error))
+         Student.findById(id)
+          .then((student) => {
+            if (!student) { return next() }
+            res.json(student)
+          })
+          .catch((error) => next(error))
+})
+
+
+  .post('/students', authenticate, (req, res, next) => {
+      let newStudent = req.body
+
+      Student.create(newStudent)
+       .then((student) => res.json(student))
+       .catch((error) => next(error))
   })
 
-  .put('/batches/:id/students', authenticate, (req, res, next) => {
+  .patch('/students/:id', authenticate, (req, res, next) => {
     const id = req.params.id
-    let newStudent = req.body
+    const studentRate = req.body
 
-    Batch.findById(id)
-      .then((batch) => {
-       if (!batch) { return next() }
-       var batchNew= batch
-       batchNew.students.push(newStudent)
+    Student.findById(id)
+     .then((student) => {
+       if (!student) { return next() }
 
-    Batch.findByIdAndUpdate(id, { $set: batchNew }, { new: true })
-      .then((batch) => res.json(batch))
-      .catch((error) => next(error))
-    })
+      student.evaluations.push(studentRate)
+
+       Student.findByIdAndUpdate(id, { $set: student }, { new: true })
+         .then((student) => res.json(student))
+         .catch((error) => next(error))
+     })
+     .catch((error) => next(error))
 })
+
+
+
 
 module.exports = router

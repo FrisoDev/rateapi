@@ -2,28 +2,23 @@ const express = require('express')
 const cors = require('cors')
 const bodyParser = require('body-parser')
 const passport = require('./config/auth')
-const { batches, users, sessions } = require('./routes')
-const http = require('http')
-
+const { users, sessions, batches, students } = require('./routes')
 
 const port = process.env.PORT || 3030
 
-const app = express()
-const server = http.Server(app)
-
-// using auth middleware
-
+let app = express()
 
 app
   .use(cors())
   .use(bodyParser.urlencoded({ extended: true }))
   .use(bodyParser.json())
   .use(passport.initialize())
+
   .use(users)
   .use(sessions)
   .use(batches)
+  .use(students)
 
-  // catch 404 and forward to error handler
   .use((req, res, next) => {
     const err = new Error('Not Found')
     err.status = 404
@@ -38,4 +33,6 @@ app
     })
   })
 
-server.listen(port)
+  .listen(port, () => {
+    console.log(`Server is listening on port ${port}`)
+  })
