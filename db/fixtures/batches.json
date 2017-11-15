@@ -2,15 +2,7 @@
   {
     "batchNumber" : "1",
     "startDate" : "2017-10-22",
-    "endDate" : "2017-12-22",
-    "students" : [
-      {"name" : "Wayo",
-         "photo" : "https://i2.wp.com/www.kingsizemag.se/wp-content/uploads/2017/11/big-shaq-genius-mans-not-ls.jpg" },
-      {"name" : "Ayo",
-         "photo" : "https://i2.wp.com/www.kingsizemag.se/wp-content/uploads/2017/11/big-shaq-genius-mans-not-ls.jpg" },
-      {"name" : "Yayo",
-         "photo" : "https://i2.wp.com/www.kingsizemag.se/wp-content/uploads/2017/11/big-shaq-genius-mans-not-ls.jpg"
-        }]
+    "endDate" : "2017-12-22"
   },
   {
     "batchNumber" : "2",

@@ -13,13 +13,14 @@ const createBatches = (token) => {
       .set('Authorization', `Bearer ${token}`)
       .send(batch)
       .then((res) => {
-        console.log('Batch seeded...', res.body)
+        console.log('Batch seeded...', res.body.title)
       })
       .catch((err) => {
-        console.error('Error seeding batch!', err)
+        console.error('Error seeding rbatch!', err)
       })
   })
 }
+
 
 const authenticate = (email, password) => {
   request
@@ -33,6 +34,7 @@ const authenticate = (email, password) => {
       console.error('Failed to authenticate!', err.message)
     })
 }
+
 request
   .post(createUrl('/users'))
   .send(user)
