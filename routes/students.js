@@ -26,12 +26,12 @@ router.get('/students/:id', authenticate, (req, res, next) => {
 
   .put('/students/:id', authenticate, (req, res, next) => {
     const id = req.params.id
-    const updatedStudent = req.body
+    const changedStudent = req.body
 
-    if (updatedStudent.evaluations[updatedStudent.evaluations.length-1].date === updatedStudent.evaluations[updatedStudent.evaluations.length-2].date )
-       {updatedStudent.evaluations.splice((updatedStudent.evaluations.length-2), 1)}
+    if (changedStudent.evaluations[changedStudent.evaluations.length-1].date === changedStudent.evaluations[changedStudent.evaluations.length-2].date )
+       {changedStudent.evaluations.splice((changedStudent.evaluations.length-2), 1)}
 
-     Student.findByIdAndUpdate(id, { $set: updatedStudent }, { new: true })
+     Student.findByIdAndUpdate(id, { $set: changedStudent }, { new: true })
        .then((student) => res.json(student))
        .catch((error) => next(error))
     })
@@ -53,20 +53,6 @@ router.get('/students/:id', authenticate, (req, res, next) => {
      })
      .catch((error) => next(error))
 })
-
-.delete('/students/:id', authenticate, (req, res, next) => {
-  const id = req.params.id
-
-    Student.findByIdAndRemove(id)
-       .then(() => {
-             res.status = 200
-             res.json({
-               message: 'Removed',
-               _id: id
-             })
-           })
-       .catch((error) => next(error))
-   })
 
 
 

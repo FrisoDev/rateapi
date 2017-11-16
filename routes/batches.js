@@ -35,41 +35,41 @@ router.get('/batches', (req, res, next) => {
   })
 
   .put('/batches/:id', authenticate, (req, res, next) => {
-    const id = req.params.id
-    const students = req.body.students
-    var updatedBatch = req.body
+  const id = req.params.id
+  const students = req.body.students
 
-    var green = students.filter(student => student.evaluations[student.evaluations.length-1].color === "green")
-    var yellow = students.filter(student => student.evaluations[student.evaluations.length-1].color === "yellow")
-    var red = students.filter(student => student.evaluations[student.evaluations.length-1].color === "red")
-    var questions = req.body.questions
-    var student = {}
+  function randomInt(min,max){
+    return Math.floor(Math.random()*(max-min+1)+min);
+  }
+  var rand = randomInt(1,100)
 
-      function take_student (color) {
-      var num = Math.floor(Math.random() * (color.length))
-           questions.push(color[num].evaluations[color[num].evaluations.length-1].color)
-           student = color[num]}
+  var updatedBatch = req.body
 
-      function quantity(questions, color) {
-        return questions.filter(q => q === color).length
-      }
+  var green = students.filter(student =>
+    student.evaluations[student.evaluations.length-1].color === "green")
 
-      function ask() {
-        if (questions.length < 2 && red.length > 0) { take_student(red) }
-        else {
-        if (quantity(questions, "red") / questions.length < 0.5 && red.length > 0) {take_student(red)}
-        else if (quantity(questions, "yellow") / questions.length < 0.33 && yellow.length > 0) {take_student(yellow)}
-        else {take_student(green)}
-      }
-      }
+  var yellow = students.filter(student =>
+    student.evaluations[student.evaluations.length-1].color === "yellow")
 
-      ask()
-      updatedBatch.questions=questions
+  var red = students.filter(student =>
+     student.evaluations[student.evaluations.length-1].color === "red")
 
-     Batch.findByIdAndUpdate(id, { $set: updatedBatch }, { new: true })
-       .then((batch) => res.json(student))
-       .catch((error) => next(error))
-  })
+  if(rand <= 17){
+    var stuGroup = green
+  }
+  if(rand > 17 && rand <= 50){
+    var stuGroup = yellow
+  }
+  if(rand > 50){
+    var stuGroup = red
+  }
+
+  var fkdStudent = stuGroup[Math.floor(Math.random() * stuGroup.length)]
+
+ Batch.findByIdAndUpdate(id, { $set: updatedBatch }, { new: true })
+   .then((batch) => res.json(fkdStudent))
+   .catch((error) => next(error))
+})
 
 
 module.exports = router
