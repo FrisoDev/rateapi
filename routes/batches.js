@@ -55,19 +55,19 @@ router.get('/batches', (req, res, next) => {
      student.evaluations[student.evaluations.length-1].color === "red")
 
   if(rand <= 17){
-    var stuGroup = green
+    var studentGroup = green
   }
   if(rand > 17 && rand <= 50){
-    var stuGroup = yellow
+    var studentGroup = yellow
   }
   if(rand > 50){
-    var stuGroup = red
+    var studentGroup = red
   }
 
-  var fkdStudent = stuGroup[Math.floor(Math.random() * stuGroup.length)]
+  var pickedStudent = studentGroup[Math.floor(Math.random() * studentGroup.length)]
 
  Batch.findByIdAndUpdate(id, { $set: updatedBatch }, { new: true })
-   .then((batch) => res.json(fkdStudent))
+   .then((batch) => res.json(pickedStudent))
    .catch((error) => next(error))
 })
 
