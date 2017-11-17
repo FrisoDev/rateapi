@@ -28,7 +28,8 @@ router.get('/students/:id', authenticate, (req, res, next) => {
     const id = req.params.id
     const changedStudent = req.body
 
-    if (changedStudent.evaluations[changedStudent.evaluations.length-1].date === changedStudent.evaluations[changedStudent.evaluations.length-2].date )
+    if (changedStudent.evaluations[changedStudent.evaluations.length-1].date
+      === changedStudent.evaluations[changedStudent.evaluations.length-2].date )
        {changedStudent.evaluations.splice((changedStudent.evaluations.length-2), 1)}
 
      Student.findByIdAndUpdate(id, { $set: changedStudent }, { new: true })
