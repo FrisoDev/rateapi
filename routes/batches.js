@@ -62,7 +62,7 @@ router.get('/batches', (req, res, next) => {
   if(rand > 50){
     var studentGroup = red
   }
-
+  
   var pickedStudent = studentGroup[Math.floor(Math.random() * studentGroup.length)]
 
  Batch.findByIdAndUpdate(id)
